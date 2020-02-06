@@ -27,8 +27,11 @@ The algorithm consists of two steps:
      "da": {"mn": 1, "wn": 1},
      "dr": {"ill": 1, "y": 1}}
     ```
-2. Identify suffixes that tend to co-occur with different prefixes using some scale invariant surprisal measure (modified Chi-square, Fisher"s exact test, etc.).
+   
+2. Convert this to a prefix–suffix co-occurrence matrix (tried using Pandas, but this eats all the memory and gets the process killed). Select suffixes that are frequent enough and have a high enough entropy (grammatical suffixes should be non-restrictive as to their host).
 
-3. Clusterise suffixes based on this distance measure. Pardigms should emerge as coherent clusters.
+3. Identify suffixes that tend to co-occur with different prefixes using some distance metric (modified Chi-square, Fisher's exact test, etc., I started with arccosine-transformed correlations).
+
+4. Clusterise suffixes based on this distance measure. Paradigms should emerge as coherent clusters.
 
 Reversing all words can be used to test for prefix-based paradigms.
